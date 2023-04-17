@@ -34,7 +34,7 @@ const Contact = () => {
                     rows='10' 
                     name='message'></textarea>
                 </div>
-                <button className='bg-[#D4AE37] text-gray-100 w-full p-4 rounded-lg pt-4'>
+                <button className='button bg-[#D4AE37] text-gray-100 w-full p-4 rounded-lg pt-4'>
                     Send Message
                 </button>
             </form>

@@ -1,51 +1,67 @@
 import React, { useEffect, useState } from 'react';
 import './App.css'
 import HeroSection from './components/HeroSection'
-import Services from './components/Services';
-import Works from './components/Works';
+// import Services from './components/Services';
+// import Works from './components/Works';
 import SideNav from './components/SideNav';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-
+import BottomNav from './components/BottomNav';
+import { useMediaQuery } from "@react-hook/media-query";
+import ButtonToggle from './components/ButtonToggle';
+import { FaSun, FaMoon } from 'react-icons/fa';
+import { themeContext } from './Context';
 
 function App() {
-  const [theme, setTheme] = useState(null);
+  const matches = useMediaQuery("(max-width: 640px)");
+  const secondmatch = useMediaQuery("(min-width: 641px)");
+  // const [theme, setTheme] = useState(null);
+  const theme = use
 
-
-  useEffect(
-    () => {
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTheme('dark');
-      } else {
-        setTheme('light');
-      }
-    }, []);
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [theme]);
-
-  const handleThemeSwitch = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  }
-  return (
-    <>
-      <button
+  // useEffect(
+  //     () => {
+  //       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  //         setTheme('dark');
+  //       } else {
+  //         setTheme('light');
+  //       }
+  //     }, []);
+  //   useEffect(() => {
+  //     if (theme === 'dark') {
+  //       document.documentElement.classList.add('dark')
+  //     } else {
+  //       document.documentElement.classList.remove('dark')
+  //     }
+  //   }, [theme]);
+  
+  //   const handleThemeSwitch = () => {
+  //     setTheme(theme === 'dark' ? 'light' : 'dark');
+  //   }
+    return (
+    <div className='App'>
+      <div onClick={handleThemeSwitch}
+      className='toggle fixed z-10 
+    right-4 top-4 text-lg p-1 rounded-full 
+    transition ease-in-out delay-100  
+    '> 
+    {/* <button
         type='button'
-        onClick={handleThemeSwitch}
-        className='fixed z-10 right-4 top-4 bg-[#454e56] 
-        text-lg p-1 rounded-full transition ease-in-out delay-100
-        grayscale hover:grayscale-0'>
-        {theme === 'dark' ? '🌓' : '🌓'}
-      </button>
-      <div className="w-full h-screen absolute top-0 left-0 font-inter bg-gray-200 dark:bg-gray-900 transition ease-in-out delay-100">
-        <div className='max-w-5xl mx-auto w-full'>
+      > */}
+        {theme === 'dark' ? <FaMoon /> : <FaSun />}
 
+
+        <div className="t-button"></div>
+      {/* </button> */}
+    </div>
+      <ButtonToggle/>
+      {matches && <BottomNav />}
+      {secondmatch && <SideNav/>}
+           {/* <div className="w-full h-screen absolute top-0 left-0 font-inter bg-gray-200 dark:bg-gray-900 transition ease-in-out delay-100"> */}
+      {/* <div className='max-w-5xl mx-auto w-full'> */}
+      <div>
+        <div>
           {/* <h1 className='text-5xl text-cyan-400'>Hello</h1> */}
-          <SideNav />
+          
           <HeroSection></HeroSection>
           <Projects></Projects>
           <Contact></Contact>
@@ -53,7 +69,7 @@ function App() {
           {/* <Works></Works> */}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
