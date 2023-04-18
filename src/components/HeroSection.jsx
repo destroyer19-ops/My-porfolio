@@ -12,13 +12,14 @@ import linkedin from '../assets/linkedin.png'
 import instagram from '../assets/instagram.png'
 
 function HeroSection() {
+    
     return (
         <div className="intro">
             <div className="i-left">
                 <div className="i-name">
-                    <span>Hi! I Am</span>
+                    <span className='dark:text-white'>Hi! I Am</span>
                     <span>Alvin</span>
-                    <span>I'm <TypeAnimation
+                    <span className='h-[10vh]'>I'm <TypeAnimation
                         sequence={[
                             'a frontend developer!!! ', // Types 'Creative Frontend Developer'
                             2000, // Waits 1s
